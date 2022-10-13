@@ -1,0 +1,11 @@
+{
+    "app":{
+        "cfengine":"lucee@5"
+    },
+    "web":{
+        "http":{
+            "port":"56889"
+        }
+    },
+    "openBrowserURL":"http://localhost:56889/tests/runner.cfm"
+}

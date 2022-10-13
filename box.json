@@ -1,0 +1,33 @@
+{
+  "name": "testbox-utils",
+  "version": "1.0.0",
+  "author": "Gavin Pickin, Scott Steinbeck",
+  "location": "forgeboxStorage",
+  "homepage": "https://github.com/gpickin/testbox-utils",
+  "documentation": "https://github.com/gpickin/testbox-utils",
+  "repository": {
+    "type": "git",
+    "URL": "https://github.com/gpickin/testbox-utils"
+  },
+  "bugs": "https://github.com/gpickin/testbox-utils/issues",
+  "slug": "testbox-utils",
+  "shortDescription": "A group of TestBox utils to help you write more tests, efficiently. Including helpers, matchers and more",
+  "description": "A group of TestBox utils to help you write more tests, efficiently. Including helpers, matchers and more",
+  "type": "modules",
+  "devDependencies": {
+    "testbox": "^4.4.0",
+    "coldbox": "^6.5.2+37"
+  },
+  "installPaths": {
+    "testbox": "testbox/",
+    "coldbox": "tests/resources/app/coldbox/"
+  },
+  "scripts": {
+    "format": "cfformat run models/**/*.cfc,tests/specs/**/*.cfc --overwrite",
+    "format:check": "cfformat check models/**/*.cfc,tests/specs/**/*.cfc"
+  },
+  "ignore": ["**/.*", "test", "tests"],
+  "testbox": {
+    "runner": "http://127.0.0.1:56889/tests/runner.cfm"
+  }
+}
