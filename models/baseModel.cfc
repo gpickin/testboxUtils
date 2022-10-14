@@ -18,7 +18,7 @@ component {
 
     function includeItemsFromFilePath( subfolder = "", filter = "*Matchers.cfm", varName = "matchers" ) {
         var items = {};
-        
+
         for (
             var currentFile in directoryList(
                 path = "/testboxUtils/#arguments.subfolder#",
