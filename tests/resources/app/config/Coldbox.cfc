@@ -182,7 +182,7 @@ component {
 	function cbLoadInterceptorHelpers( event, interceptData, rc, prc ){
 		controller.getModuleService()
 			.registerAndActivateModule(
-				moduleName 		= "testbox-utils",
+				moduleName 		= "TestBox-Utils",
 				invocationPath 	= "testingModuleRoot"
 			);
 	}
