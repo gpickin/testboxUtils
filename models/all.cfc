@@ -1,4 +1,4 @@
-component extends="models.baseModel" {
+component extends="testboxUtils.models.baseModel" {
 
     function getMatchers( includes = "" ) {
         if ( arguments.includes.listLen() == 0 ) {

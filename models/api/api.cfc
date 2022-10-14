@@ -1,4 +1,4 @@
-component extends="models.baseModel" {
+component extends="testboxUtils.models.baseModel" {
 
     function getMatchers() {
         return includeMatchersFromFilePath( path = "./" );
