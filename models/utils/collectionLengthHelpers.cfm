@@ -1,0 +1,7 @@
+<cfscript>
+
+    var helpers = {
+
+    }
+
+</cfscript>
