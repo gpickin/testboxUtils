@@ -36,5 +36,6 @@
 
                 return true;
             }
-    }
-}
+        }
+};
+</cfscript>
