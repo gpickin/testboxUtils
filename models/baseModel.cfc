@@ -20,7 +20,7 @@ component {
 
     function includeItemsFromFilePath( subfolder = moduleConfig.PATH, filter = "*Matchers.cfm", varName = "matchers" ) {
         var items = {};
-        
+
         for (
             var currentFile in directoryList(
                 path = "#arguments.subfolder#",
@@ -29,9 +29,19 @@ component {
                 filter = arguments.filter
             )
         ) {
-            var fixedPath = replace( moduleConfig.PATH, "\\", server.separator.file, "all" );
-            fixedPath = replace( fixedPath, "/", server.separator.file, "all" );
-            
+            var fixedPath = replace(
+                moduleConfig.PATH,
+                "\\",
+                server.separator.file,
+                "all"
+            );
+            fixedPath = replace(
+                fixedPath,
+                "/",
+                server.separator.file,
+                "all"
+            );
+
             var includePath = "#moduleConfig.MAPPING##server.separator.file##replace( currentFile, fixedPath & server.separator.file, "" )#";
             includePath = replace( includePath, "\\", "/", "all" );
             include includePath;
