@@ -10,19 +10,93 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
             } );
 
             var validRoute = "/";
-            story( "When we use the BaseWebhook Rest Handler", function() {
-                given( "we can call the onError method", function() {
-                    when( "an error is thrown", function() {
-                        then( "the json will reflect an error value of true", function() {
+            story( "When we use the Status Code Matcher toHaveStatusCode()", function() {
+                given( "the event is a 200", function() {
+                    when( "we expect to have a status code of 200", function() {
+                        then( "the expectation will succeed", function() {
                             var event = this.get( "#validRoute#" );
-                            var response = event.getPrivateValue( "response" );
-                            expect( response.getError() ).toBeTrue();
+                            expect( event ).toHaveStatusCode( 200 );
                         } );
-                        then( "a error status code will not be returned - as the Webhook Handler must always return 200s", function() {
+                    } );
+                    when( "we expect to not have a status code of 201", function() {
+                        then( "the expectation will succeed", function() {
                             var event = this.get( "#validRoute#" );
-                            expect( event ).toBe200();
-                            expect( event ).toBe200( "I should be a 200" );
-                            expect( event ).toBe200();
+                            expect( event ).notToHaveStatusCode( 201 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 400", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            expect( event ).notToHaveStatusCode( 400 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 401", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            expect( event ).notToHaveStatusCode( 401 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 403", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            expect( event ).notToHaveStatusCode( 403 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 500", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            expect( event ).notToHaveStatusCode( 500 );
+                        } );
+                    } );
+                } );
+                given( "the event is a 201", function() {
+                    when( "we expect to have a status code of 201", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            event.setHTTPHeader( 201, "Created success" );
+                            expect( event ).toHaveStatusCode( 201 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 200", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            event.setHTTPHeader( 201, "Created success" );
+                            expect( event ).notToHaveStatusCode( 200 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 400", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            event.setHTTPHeader( 201, "Created success" );
+                            expect( event ).notToHaveStatusCode( 400 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 401", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            event.setHTTPHeader( 201, "Created success" );
+                            expect( event ).notToHaveStatusCode( 401 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 403", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            event.setHTTPHeader( 201, "Created success" );
+                            expect( event ).notToHaveStatusCode( 403 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 422", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            event.setHTTPHeader( 201, "Created success" );
+                            expect( event ).notToHaveStatusCode( 422 );
+                        } );
+                    } );
+                    when( "we expect to not have a status code of 500", function() {
+                        then( "the expectation will succeed", function() {
+                            var event = this.get( "#validRoute#" );
+                            event.setHTTPHeader( 201, "Created success" );
+                            expect( event ).notToHaveStatusCode( 500 );
                         } );
                     } );
                 } );
