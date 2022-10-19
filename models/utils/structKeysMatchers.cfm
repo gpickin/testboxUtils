@@ -30,7 +30,6 @@
                     } else {
                         expectation.message = "The key(s) [#args.key#] does not exist in the target object, with or without case sensitivity. Found keys are [#structKeyArray( expectation.actual ).toString()#]";
                     }
-                    debug( expectation.actual );
                     return false;
                 }
 

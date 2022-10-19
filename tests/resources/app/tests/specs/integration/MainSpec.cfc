@@ -47,8 +47,6 @@ component
 
 			it( "can render some restful data", function() {
 				var event = this.post( "main.data" );
-
-				debug( event.getHandlerResults() );
 				expect( event.getRenderedContent() ).toBeJSON();
 			} );
 
