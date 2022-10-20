@@ -1,27 +1,13 @@
 <cfscript>
     include "apiResponseHelpers.cfm";
 
-    private function toHaveKeyWithCase( expectation, subActual, args = {} ){
-        // if( expectation.isNot ){
-        //     if( listFind( subActual.keyList(), args.key ) ){
-        //         expectation.message = "The key(s) [#args.key#] does exist in the target object, with case sensitivity.";
-        //         return false;
-        //     }
-        //     return true;
-        // } else {
-            if( !listFind( subActual.keyList(), args.key ) ){
-                if( listFindNoCase( subActual.keyList(), args.key ) ){
-                    expectation.message = "The key(s) [#args.key#] does exist in the target object, but the Case is incorrect. Found keys are [#structKeyArray( subActual ).toString()#]";
-                } else {
-                    expectation.message = "The key(s) [#args.key#] does not exist in the target object, with or without case sensitivity. Found keys are [#structKeyArray( subActual ).toString()#]";
-                }
-                return false;
-            }
+    var matchers = {};
+    // Sample matcher function
+    // xxxxx = function( expectation, args = { } ) {};
+    // Add sample function to matchers
+    // matchers[ "xxxxx" ] = xxxx;
 
-            return true;
-        // }
-    }
-
+    // Add your matchers here
     toHaveAPIResponse = function( expectation, args = { } ) {
         try {
             var apiResponse = helpers.getAPIResponse( expectation.actual );
@@ -88,6 +74,7 @@
         }
         return true;
     }
+    matchers[ "toHaveAPIResponse" ] = toHaveAPIResponse;
 
     toHaveAPIError = function( expectation, args = {} ) {
         try {
@@ -113,7 +100,8 @@
             }
             return true;
         } 
-    }
+    };
+    matchers[ "toHaveAPIError" ] = toHaveAPIError;
 
     toHaveAPIErrorWithMessage = function( expectation, args = {} ) {
         param args.expectedMessage = "";
@@ -156,6 +144,7 @@
             return true;
         }
     }
+    matchers[ "toHaveAPIErrorWithMessage" ] = toHaveAPIErrorWithMessage;
 
     toHaveAPISuccessWithMessage = function( expectation, args = { message="" } ) {
         param args.expectedMessage = "";
@@ -198,11 +187,20 @@
             return true;
         }
     }
-
-    var matchers = {};
-    matchers[ "toHaveAPIResponse" ] = toHaveAPIResponse;
-    matchers[ "toHaveAPIError" ] = toHaveAPIError;
-    matchers[ "toHaveAPIErrorWithMessage" ] = toHaveAPIErrorWithMessage;
     matchers[ "toHaveAPISuccessWithMessage" ] = toHaveAPISuccessWithMessage;
 
+
+
+    // Private helper functions
+    private function toHaveKeyWithCase( expectation, subActual, args = {} ){
+        if( !listFind( subActual.keyList(), args.key ) ){
+            if( listFindNoCase( subActual.keyList(), args.key ) ){
+                expectation.message = "The key(s) [#args.key#] does exist in the target object, but the Case is incorrect. Found keys are [#structKeyArray( subActual ).toString()#]";
+            } else {
+                expectation.message = "The key(s) [#args.key#] does not exist in the target object, with or without case sensitivity. Found keys are [#structKeyArray( subActual ).toString()#]";
+            }
+            return false;
+        }
+        return true;
+    }
 </cfscript>

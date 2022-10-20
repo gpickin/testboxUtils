@@ -1,5 +1,5 @@
 component extends="testboxUtils.models.baseModel" {
 
-    filePrefix = "apiStatusCodes";
+    filePrefix = "apiStatusCode";
 
 }

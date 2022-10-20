@@ -1,7 +1,7 @@
 <cfscript>
     
     var matchers = {
-        toHaveKeyWithCase: function( expectation, args = {} ) {
+        toHaveKeyWithCase= function( expectation, args = {} ) {
             // handle both positional and named arguments
             param args.key = "";
             if ( structKeyExists( args, 1 ) ) {

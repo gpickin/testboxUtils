@@ -47,19 +47,19 @@
 	};
 
     var matchers = {
-        toHaveLengthGT: function( expectation, args = {} ) {
+        toHaveLengthGT= function( expectation, args = {} ) {
 			args[ "operator" ] = "GT";
 			return lengthTest( expectation, args );
 		},
-		toHaveLengthGTE: function( expectation, args = {} ) {
+		toHaveLengthGTE= function( expectation, args = {} ) {
 			args[ "operator" ] = "GTE";
 			return lengthTest( expectation, args );
 		},
-		toHaveLengthLT: function( expectation, args = {} ) {
+		toHaveLengthLT= function( expectation, args = {} ) {
 			args[ "operator" ] = "LT";
 			return lengthTest( expectation, args );
 		},
-		toHaveLengthLTE: function( expectation, args = {} ) {
+		toHaveLengthLTE= function( expectation, args = {} ) {
 			args[ "operator" ] = "LTE";
 			return lengthTest( expectation, args );
 		}

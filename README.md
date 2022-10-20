@@ -79,18 +79,18 @@ Module path instantion ( required for Unit tests )
 Module path instantion ( required for Unit tests )
 
 - `new testboxUtils.models.folderName.utilityFileName()`
-- `new testboxUtils.models.api.apiStatusCodes()`
+- `new testboxUtils.models.api.apiStatusCode()`
 
 Optional Injection Syntax - Only available in Integration tests with Wirebox
 
 - `inject="utilityFileName@testboxUtils"` - Matchers and Helpers from the utility itself
-- `inject="apiStatusCodes@testboxUtils"` - Matchers and Helpers from the apiStatusCodes utility itself
+- `inject="apiStatusCode@testboxUtils"` - Matchers and Helpers from the apiStatusCode utility itself
 
 ## Current Categories
 
 ### API
 
-- apiStatusCodes
+- apiStatusCode
   - `expect( event|response ).toHaveStatusCode( numeric )`
   - `expect( event|response ).toBe200()`
   - `expect( event|response ).toBe201()`
