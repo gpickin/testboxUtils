@@ -49,7 +49,7 @@ expect( event.getRenderedContent() ).toHaveStatusCode( 403 );
 
 ## How to only import the matchers you want?
 
-This module is build with the following options, all, category, or specific utility itself.
+This module is built with the following options, all, category, or specific utility itself.
 
 You can use the syntax to get a specific set of matchers and helpers, matching your needs.
 
