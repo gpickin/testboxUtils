@@ -17,6 +17,10 @@
             return false;
         }
         var isValidAPIResponse = true;
+        if( !isStruct( apiResponse ) ){
+            expectation.message = "The apiResponse is not a struct";
+            return false;
+        }
         if( !toHaveKeyWithCase( expectation, apiResponse, { key: "data" } ) ){
             return false;
         }
@@ -35,6 +39,10 @@
             return false;
         }
         if( !toHaveKeyWithCase( expectation, apiResponse, { key: "pagination" } ) ){
+            return false;
+        }
+        if( !isStruct( apiResponse.pagination ) ){
+            expectation.message = "The pagination key is not a struct";
             return false;
         }
         if( !toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "totalPages" } ) ){
