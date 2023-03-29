@@ -34,7 +34,7 @@
      */
     getPRC= function( event ){
         try{
-            return event.getCollection();
+            return event.getPrivateCollection();
         }catch(e){
             throw( type="TestBoxUtils-EventException", message="The event does not have a collection scope.  Are you sure this is a ColdBox event?" );
         }
