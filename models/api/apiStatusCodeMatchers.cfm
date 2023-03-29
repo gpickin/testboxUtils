@@ -58,6 +58,12 @@
 	};
 	matchers[ "toBe405" ] = toBe405;
 
+	toBe412= function( expectation, args = {} ) {
+		arguments.args = prependToArgs( args, 412 );
+		return statusCodeTest( argumentCollection = arguments );
+	};
+	matchers[ "toBe412" ] = toBe412;
+
 	tobe422= function( expectation, args = {} ) {
 		arguments.args = prependToArgs( args, 422 );
 		return statusCodeTest( argumentCollection = arguments );
