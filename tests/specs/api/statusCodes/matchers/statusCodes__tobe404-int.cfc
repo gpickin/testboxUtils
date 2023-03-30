@@ -30,8 +30,8 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
         ];
 
         for ( var test in testsToRun ) {
-            story( "#test.story.description# #test.story.description#()", function() {
-                given( "we call the #test.story.description#() function", function() {
+            story( "#test.story.description# #test.story.function#()", function() {
+                given( "we call the #test.story.function#() function", function() {
                     for ( item in test.story.given.array ) {
                         when( "the event is a #item.statuscode#", function() {
                             then( "the #test.story.function#() expectation will #item.result ? "succeed" : "fail"#", function() {
