@@ -90,6 +90,10 @@ Optional Injection Syntax - Only available in Integration tests with Wirebox
 
 ### API
 
+- apiResponse
+
+  - `expect( event ).toBeAPIResponseWithError( "X-API-Token is required" )`;
+
 - apiStatusCode
   - `expect( event|response ).toHaveStatusCode( numeric )`
   - `expect( event|response ).toBe200()`
