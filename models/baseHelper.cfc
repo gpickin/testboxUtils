@@ -8,11 +8,10 @@ component singleton {
         return arguments.args;
     }
 
-    function getHelpers(){
-        return variables.filter( function( key ){
-			return key != "THIS" && key != "getmatchers" & key != "gethelpers";
-		} );
+    function getHelpers() {
+        return variables.filter( function( key ) {
+            return key != "THIS" && key != "getmatchers" & key != "gethelpers";
+        } );
     }
-    
 
 }

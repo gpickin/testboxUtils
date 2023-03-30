@@ -4,7 +4,7 @@ component singleton extends="testboxUtils.models.baseMatcher" {
     // - .toHaveKeys( list ) //include all keys In list
     // - .toHaveExactKeys( list ) // toOnlyHaveKeys()
     // - .toHaveKeysWithCase( list )
-    // - .tpHaveExactKeysWithCase( list ) 
+    // - .tpHaveExactKeysWithCase( list )
     // - .toOnlyHaveKeysWithCase( list )
     // - .toMatchStructure( struct )
     // - .toMatchStructWithCase( struct )
@@ -25,15 +25,15 @@ component singleton extends="testboxUtils.models.baseMatcher" {
             return false;
         }
 
-        if( expectation.isNot ){
-            if( listFind( expectation.actual.keyList(), args.key ) ){
+        if ( expectation.isNot ) {
+            if ( listFind( expectation.actual.keyList(), args.key ) ) {
                 expectation.message = "The key(s) [#args.key#] does exist in the target object, with case sensitivity.";
                 return false;
             }
             return true;
         } else {
-            if( !listFind( expectation.actual.keyList(), args.key ) ){
-                if( listFindNoCase( expectation.actual.keyList(), args.key ) ){
+            if ( !listFind( expectation.actual.keyList(), args.key ) ) {
+                if ( listFindNoCase( expectation.actual.keyList(), args.key ) ) {
                     expectation.message = "The key(s) [#args.key#] does exist in the target object, but the Case is incorrect. Found keys are [#structKeyArray( expectation.actual ).toString()#]";
                 } else {
                     expectation.message = "The key(s) [#args.key#] does not exist in the target object, with or without case sensitivity. Found keys are [#structKeyArray( expectation.actual ).toString()#]";
