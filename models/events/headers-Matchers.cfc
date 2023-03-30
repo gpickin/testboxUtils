@@ -1,4 +1,4 @@
-component singleton  extends="testboxUtils.models.baseMatcher" {
+component singleton extends="testboxUtils.models.baseMatcher" {
 
     // TODO: Implement
     // - toHaveHeader() //toHaveHeaderEqual()
@@ -8,5 +8,5 @@ component singleton  extends="testboxUtils.models.baseMatcher" {
     // - toHaveHeaderValueMatch()
     // - toHaveHeaderValueInclude()
     // Add your matchers here
-    
+
 }

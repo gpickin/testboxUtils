@@ -9,33 +9,32 @@ component singleton {
         return arguments.args;
     }
 
-    function getMatchers(){
-		var matchers = {};
-		for( var variable in variables ){
-			if( exportFunction( variable ) ){
-				matchers.append( { "#variable#": getFunction( variable ) } );
-			}
-		}
-		return matchers;
-	}
+    function getMatchers() {
+        var matchers = {};
+        for ( var variable in variables ) {
+            if ( exportFunction( variable ) ) {
+                matchers.append( { "#variable#": getFunction( variable ) } );
+            }
+        }
+        return matchers;
+    }
 
-    function getFunction( variable ){
+    function getFunction( variable ) {
         var functionName = variable;
-        return function( ){ 
+        return function() {
             return variables[ variable ]( argumentCollection = arguments );
         };
     }
 
-	private function exportFunction( variable ){
-		var ignoreList = "THIS,helpers,getMatchers,getHelpers,exportFunction,prependToArgs";
-		if( ignoreList.listContainsNoCase( variable ) ){
-			return false;
-		}  else if( left( variable, 1 ) == "_" ){
-			return false;
-		} else {
-			return true;
-		}
-	}
-    
+    private function exportFunction( variable ) {
+        var ignoreList = "THIS,helpers,getMatchers,getHelpers,exportFunction,prependToArgs";
+        if ( ignoreList.listContainsNoCase( variable ) ) {
+            return false;
+        } else if ( left( variable, 1 ) == "_" ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }
