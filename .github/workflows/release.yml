@@ -12,7 +12,6 @@ jobs:
     name: Tests
     strategy:
       fail-fast: false
-      continue-on-error: ${{ matrix.experimental }}
       matrix:
         cfengine: ["lucee@5"]
         coldbox: ["coldbox@6"]
