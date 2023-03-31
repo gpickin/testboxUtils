@@ -20,9 +20,9 @@ component singleton {
     }
 
     function getFunction( variable ) {
-        var functionName = variable;
+        var functionName = variables[ variable ];
         return function() {
-            return variables[ variable ]( argumentCollection = arguments );
+            return functionName( argumentCollection = arguments );
         };
     }
 

@@ -8,8 +8,6 @@ component singleton extends="testboxUtils.models.baseMatcher" {
     cfinclude( template = "apiStatusCode-matcherHelpers.cfm" );
 
     function toHaveStatusCode( expectation, args = {} ) {
-        // writeDump( "tohavestatuscode" );
-        // writeDump( var=arguments, top=1 );
         return _statusCodeTest( arguments.expectation, arguments.args );
     };
 
