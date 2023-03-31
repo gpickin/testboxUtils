@@ -12,18 +12,12 @@ jobs:
       fail-fast: false
       continue-on-error: ${{ matrix.experimental }}
       matrix:
-        cfengine:
-          [
-            "lucee@5",
-          ]
+        cfengine:["lucee@5"]
         coldbox: ["coldbox@6"]
         javaVersion: ["openjdk8", "openjdk11"]
         experimental: [false]
         include: 
-          - cfengine:
-            [
-              "lucee@5",
-            ]
+          - cfengine:["lucee@5"]
           coldbox: ["coldbox@be"]
           javaVersion: ["openjdk8", "openjdk11"]
           experimental: [true]
