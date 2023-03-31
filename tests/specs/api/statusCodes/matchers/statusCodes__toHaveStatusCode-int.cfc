@@ -24,17 +24,25 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
             story( "#test.story.description# #test.story.functionName#( #statusCode# )", function() {
                 given( "we call the #test.story.functionName#() function", function() {
                     for ( testCode in statusCodes ) {
-                        when( when="the event is a #testCode#", data={ "testCode": testCode }, body=function() {
-                            then( then="the #test.story.functionName#( #statusCode# ) expectation will #statusCode == testCode ? "succeed" : "fail"#", data={ "testCode": testCode }, body= function() {
-                                var event = this.get( "#validRoute#" );
-                                event.setHTTPHeader( testCode );
-                                if ( statusCode == testCode ) {
-                                    expect( event )[ "#test.story.functionName#" ]( statusCode );
-                                } else {
-                                    expect( event )[ "not#test.story.functionName#" ]( statusCode );
-                                }
-                            } );
-                        } );
+                        when(
+                            when = "the event is a #testCode#",
+                            data = { "testCode": testCode },
+                            body = function() {
+                                then(
+                                    then = "the #test.story.functionName#( #statusCode# ) expectation will #statusCode == testCode ? "succeed" : "fail"#",
+                                    data = { "testCode": testCode },
+                                    body = function() {
+                                        var event = this.get( "#validRoute#" );
+                                        event.setHTTPHeader( testCode );
+                                        if ( statusCode == testCode ) {
+                                            expect( event )[ "#test.story.functionName#" ]( statusCode );
+                                        } else {
+                                            expect( event )[ "not#test.story.functionName#" ]( statusCode );
+                                        }
+                                    }
+                                );
+                            }
+                        );
                     }
                 } );
             } );

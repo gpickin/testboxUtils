@@ -10,7 +10,7 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
             "functionName": "toBe401",
             "successfulStatusCode": 401
         };
-        cfinclude( template="inc_testLoop.cfm" );
-
+        cfinclude( template = "inc_testLoop.cfm" );
     }
+
 }

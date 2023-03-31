@@ -5,14 +5,12 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
     }
 
     function run() {
-        
         var test = {
             "description": "Using the Status Code Matcher",
             "functionName": "toBe200",
             "successfulStatusCode": 200
         };
-        cfinclude( template="inc_testLoop.cfm" );
-        
+        cfinclude( template = "inc_testLoop.cfm" );
     }
 
 }
