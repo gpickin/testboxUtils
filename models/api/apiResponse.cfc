@@ -1,6 +1,6 @@
 component extends="testboxUtils.models.baseModel" {
 
-    filePrefix = "struckKeys";
+    filePrefix = "apiResponses";
     function getMatchers( includes = "", excludes = "" ) {
         return includeMatchersFromFilePath(
             path = "./",

@@ -1,6 +1,0 @@
-<cfscript>
-
-    var matchers = {
-
-	}
-</cfscript>

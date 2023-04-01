@@ -1,37 +1,68 @@
 component {
 
-    function prependToArgs( args, value ) {
-        if ( arguments.args.keyExists( "1" ) ) {
-            arguments.args[ "2" ] = arguments.args[ "1" ];
-        }
-        arguments.args[ "1" ] = arguments.value;
-        return arguments.args;
+    function includeMatchersFromFilePath(
+        path = "",
+        includes = "",
+        excludes = "",
+        filePrefix = ""
+    ) {
+        return includeItemsFromFilePath(
+            subfolder = arguments.path,
+            filter = "*-Matchers.cfc",
+            varName = "matchers",
+            includes = arguments.includes,
+            excludes = arguments.excludes,
+            filePrefix = arguments.filePrefix
+        );
     }
 
-    function includeMatchersFromFilePath( path = "" ) {
-        return includeItemsFromFilePath( path = arguments.path, filter = "*Matchers.cfm", varName = "matchers" );
+    function includeHelpersFromFilePath(
+        path = "",
+        includes = "",
+        excludes = "",
+        filePrefix = ""
+    ) {
+        return includeItemsFromFilePath(
+            subfolder = arguments.path,
+            filter = "*-Helpers.cfc",
+            varName = "helpers",
+            includes = arguments.includes,
+            excludes = arguments.excludes,
+            filePrefix = arguments.filePrefix
+        );
     }
 
-    function includeHelpersFromFilePath( path = "" ) {
-        return includeItemsFromFilePath( path = arguments.path, filter = "*Helpers.cfm", varName = "helpers" );
-    }
-
-    function includeItemsFromFilePath( subfolder = "", filter = "*Matchers.cfm", varName = "matchers" ) {
+    function includeItemsFromFilePath(
+        subfolder = "",
+        filter = "*-Matchers.cfc",
+        varName = "matchers",
+        includes = "",
+        excludes = "",
+        filePrefix = ""
+    ) {
         var items = {};
+        var directories = [];
 
-        for (
-            var currentFile in directoryList(
+        if ( arguments.includes.listLen() == 0 ) {
+            directories = directoryList(
                 path = "/testboxUtils/#arguments.subfolder#",
                 listInfo = "path",
                 recurse = true,
-                filter = arguments.filter
+                filter = "#arguments.filePrefix##arguments.filter#"
+            );
+        } else {
+            directories = directoryList(
+                path = "/testboxUtils/#arguments.subfolder#",
+                listInfo = "path",
+                recurse = true,
+                filter = "#arguments.filePrefix##arguments.filter#"
             )
-        ) {
+        }
+        // writeDump( directories );abort;
+        for ( var currentFile in directories ) {
             var fixedPath = expandPath( "/testboxUtils" );
-            var includePath = "/testboxUtils#replace( currentFile, fixedPath, "" )#";
-            // includePath = replace( includePath, "\\", "/", "all" );
-            include includePath;
-            items.append( local[ arguments.varName ] );
+            var includePath = "/testboxUtils/#replace( listDeleteAt( currentFile, listLen( currentFile, "." ), "." ), fixedPath, "" )#";
+            items.append( invoke( includePath, "get#arguments.varName#" ) );
         }
         return items;
     }
