@@ -1,11 +1,19 @@
 component extends="testboxUtils.models.baseModel" {
 
-    function getMatchers() {
-        return includeMatchersFromFilePath( path = expandPath( "./" ) );
+    function getMatchers( includes = "", excludes = "" ) {
+        return includeMatchersFromFilePath(
+            path = "./api",
+            includes = arguments.includes,
+            excludes = arguments.excludes
+        );
     }
 
-    function getHelpers() {
-        return includeHelpersFromFilePath( path = expandPath( "./" ) );
+    function getHelpers( includes = "", excludes = "" ) {
+        return includeHelpersFromFilePath(
+            path = "./api",
+            includes = arguments.includes,
+            excludes = arguments.excludes
+        );
     }
 
 }

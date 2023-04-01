@@ -18,23 +18,31 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
             422,
             500
         ];
-        var test = { "story": { "description": "Using the Status Code Matcher", "function": "toHaveStatusCode" } };
+        var test = { "story": { "description": "Using the Status Code Matcher", "functionName": "toHaveStatusCode" } };
 
         for ( var statusCode in statusCodes ) {
-            story( "#test.story.description# #test.story.function#( #statusCode# )", function() {
-                given( "we call the #test.story.function#() function", function() {
+            story( "#test.story.description# #test.story.functionName#( #statusCode# )", function() {
+                given( "we call the #test.story.functionName#() function", function() {
                     for ( testCode in statusCodes ) {
-                        when( "the event is a #testCode#", function() {
-                            then( "the #test.story.function#( #statusCode# ) expectation will #statusCode == testCode ? "succeed" : "fail"#", function() {
-                                var event = this.get( "#validRoute#" );
-                                event.setHTTPHeader( testCode );
-                                if ( statusCode == testCode ) {
-                                    expect( event )[ "#test.story.function#" ]( statusCode );
-                                } else {
-                                    expect( event )[ "not#test.story.function#" ]( statusCode );
-                                }
-                            } );
-                        } );
+                        when(
+                            when = "the event is a #testCode#",
+                            data = { "testCode": testCode },
+                            body = function() {
+                                then(
+                                    then = "the #test.story.functionName#( #statusCode# ) expectation will #statusCode == testCode ? "succeed" : "fail"#",
+                                    data = { "testCode": testCode },
+                                    body = function() {
+                                        var event = this.get( "#validRoute#" );
+                                        event.setHTTPHeader( testCode );
+                                        if ( statusCode == testCode ) {
+                                            expect( event )[ "#test.story.functionName#" ]( statusCode );
+                                        } else {
+                                            expect( event )[ "not#test.story.functionName#" ]( statusCode );
+                                        }
+                                    }
+                                );
+                            }
+                        );
                     }
                 } );
             } );
