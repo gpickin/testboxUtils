@@ -224,7 +224,7 @@ component singleton extends="testboxUtils.models.baseMatcher" {
             expectation.message = "No Key Provided.";
             return false;
         }
-        
+
         if ( !listFind( subActual.keyList(), args.key ) ) {
             if ( listFindNoCase( subActual.keyList(), args.key ) ) {
                 expectation.message = "The key(s) [#args.key#] does exist in the target object, but the Case is incorrect. Found keys are [#structKeyArray( subActual ).toString()#]";
