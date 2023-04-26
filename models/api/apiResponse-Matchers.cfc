@@ -38,59 +38,59 @@ component singleton extends="testboxUtils.models.baseMatcher" {
             expectation.message = "The apiResponse is not a struct";
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse, { key: "data" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse, { key: "data" } ) ) {
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse, { key: "error" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse, { key: "error" } ) ) {
             return false;
         }
         if ( !isBoolean( apiResponse.error ) ) {
             expectation.message = "The error key must be a boolean value";
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse, { key: "messages" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse, { key: "messages" } ) ) {
             return false;
         }
         if ( !isArray( apiResponse.messages ) ) {
             expectation.message = "The messages key is not an array";
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse, { key: "pagination" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse, { key: "pagination" } ) ) {
             return false;
         }
         if ( !isStruct( apiResponse.pagination ) ) {
             expectation.message = "The pagination key is not a struct";
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "totalPages" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "totalPages" } ) ) {
             return false;
         }
         if ( !isNumeric( apiResponse.pagination.totalPages ) ) {
             expectation.message = "The pagination.totalPages key is not an numeric";
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "maxRows" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "maxRows" } ) ) {
             return false;
         }
         if ( !isNumeric( apiResponse.pagination.maxRows ) ) {
             expectation.message = "The pagination.maxRows key is not numeric";
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "offset" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "offset" } ) ) {
             return false;
         }
         if ( !isNumeric( apiResponse.pagination.offset ) ) {
             expectation.message = "The pagination.offset key is not an numeric";
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "page" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "page" } ) ) {
             return false;
         }
         if ( !isNumeric( apiResponse.pagination.page ) ) {
             expectation.message = "The pagination.page key is not an numeric";
             return false;
         }
-        if ( !toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "totalRecords" } ) ) {
+        if ( !_toHaveKeyWithCase( expectation, apiResponse.pagination, { key: "totalRecords" } ) ) {
             return false;
         }
         if ( !isNumeric( apiResponse.pagination.totalRecords ) ) {
@@ -210,7 +210,21 @@ component singleton extends="testboxUtils.models.baseMatcher" {
     /**
      * Private helper function
      */
-    private function toHaveKeyWithCase( expectation, subActual, args = {} ) {
+    private function _toHaveKeyWithCase( expectation, subActual, args = {} ) {
+        param args.key = "";
+        if ( structKeyExists( args, 1 ) ) {
+            args.key = args[ 1 ];
+        }
+        param args.message = "";
+        if ( structKeyExists( args, 2 ) ) {
+            args.message = args[ 2 ];
+        }
+
+        if ( args.key == "" ) {
+            expectation.message = "No Key Provided.";
+            return false;
+        }
+
         if ( !listFind( subActual.keyList(), args.key ) ) {
             if ( listFindNoCase( subActual.keyList(), args.key ) ) {
                 expectation.message = "The key(s) [#args.key#] does exist in the target object, but the Case is incorrect. Found keys are [#structKeyArray( subActual ).toString()#]";
