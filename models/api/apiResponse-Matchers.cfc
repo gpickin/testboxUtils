@@ -152,13 +152,13 @@ component singleton extends="testboxUtils.models.baseMatcher" {
             }
         }
         if ( expectation.isNot ) {
-            if ( arrayFind( apiResponse.messages, args.expectedMessage ) ) {
+            if ( arrayContains( apiResponse.messages, args.expectedMessage, true ) ) {
                 expectation.message = "The API Response contains the message [#args.expectedMessage#] when you expected it not to contain the message.";
                 return false;
             }
             return true;
         } else {
-            if ( !arrayFind( apiResponse.messages, args.expectedMessage ) ) {
+            if ( !arrayContains( apiResponse.messages, args.expectedMessage, true ) ) {
                 expectation.message = "The API Response does not contain the message [#args.expectedMessage#]";
                 return false;
             }
@@ -193,13 +193,13 @@ component singleton extends="testboxUtils.models.baseMatcher" {
             }
         }
         if ( expectation.isNot ) {
-            if ( arrayFind( apiResponse.messages, args.expectedMessage ) ) {
+            if ( arrayContains( apiResponse.messages, args.expectedMessage, true ) ) {
                 expectation.message = "The API Response contains the message [#args.expectedMessage#] when you expected it not to contain the message.";
                 return false;
             }
             return true;
         } else {
-            if ( !arrayFind( apiResponse.messages, args.expectedMessage ) ) {
+            if ( !arrayContains( apiResponse.messages, args.expectedMessage, true ) ) {
                 expectation.message = "The API Response does not contain the message [#args.expectedMessage#]";
                 return false;
             }
